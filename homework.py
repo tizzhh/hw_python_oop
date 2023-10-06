@@ -15,21 +15,22 @@ class InfoMessage:
     speed: float
     calories: float
 
-    message = ("Тип тренировки: {training_type}; "
-               "Длительность: {duration:.3f} ч.; "
-               "Дистанция: {distance:.3f} км; "
-               "Ср. скорость: {speed:.3f} км/ч; "
-               "Потрачено ккал: {calories:.3f}.")
+    message = (
+        "Тип тренировки: {training_type}; "
+        "Длительность: {duration:.3f} ч.; "
+        "Дистанция: {distance:.3f} км; "
+        "Ср. скорость: {speed:.3f} км/ч; "
+        "Потрачено ккал: {calories:.3f}."
+    )
 
     def get_message(self) -> str:
         """Создать и вернуть сообщение о выполненной тренировке."""
-        return (
-            self.message.format(training_type=self.training_type,
-                                duration=self.duration,
-                                distance=self.distance,
-                                speed=self.speed,
-                                calories=self.calories,
-                                )
+        return self.message.format(
+            training_type=self.training_type,
+            duration=self.duration,
+            distance=self.distance,
+            speed=self.speed,
+            calories=self.calories,
         )
 
 
@@ -60,8 +61,9 @@ class Training:
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
-        raise NotImplementedError('Метод предполагает реализацию'
-                                  ' в дочерних классах.')
+        raise NotImplementedError(
+            "Метод предполагает реализацию" " в дочерних классах."
+        )
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
@@ -167,7 +169,7 @@ class Swimming(Training):
 WORKOUT_TYPES: dict[str, type] = {
     "SWM": Swimming,
     "RUN": Running,
-    "WLK": SportsWalking
+    "WLK": SportsWalking,
 }
 
 
