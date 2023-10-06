@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 
 # Здравствуйте, Андрей. Я, к сожалению, не знаю,
 # как связаться с вами по-другому, поэтому вот :D.
@@ -26,13 +26,7 @@ class InfoMessage:
 
     def get_message(self) -> str:
         """Создать и вернуть сообщение о выполненной тренировке."""
-        return self.message.format(
-            training_type=self.training_type,
-            duration=self.duration,
-            distance=self.distance,
-            speed=self.speed,
-            calories=self.calories,
-        )
+        return self.message.format(**asdict(self))  # Вау, как удобно! :D
 
 
 class Training:
@@ -168,7 +162,9 @@ class Swimming(Training):
         )
 
 
-WORKOUT_TYPES: dict[str, type] = {
+# Существует ли такой сценарий, при котором надо указывать
+# наследуемые классы, а не родительский?
+WORKOUT_TYPES: dict[str, type[Training]] = {
     "SWM": Swimming,
     "RUN": Running,
     "WLK": SportsWalking,
