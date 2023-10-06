@@ -175,7 +175,7 @@ def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
     if workout_type in WORKOUT_TYPES:
         return WORKOUT_TYPES[workout_type](*data)
-    raise KeyError(f"Тренировка {workout_type} не поддерживается.")
+    raise ValueError(f"Тренировка {workout_type} не поддерживается.")
 
 
 def main(training: Training) -> None:
