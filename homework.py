@@ -1,8 +1,9 @@
 from dataclasses import dataclass
 
-
-class NotImplementedError(Exception):
-    pass
+# Здравствуйте, Андрей. Я, к сожалению, не знаю,
+# как связаться с вами по-другому, поэтому вот :D.
+# Подскажите, пожалуйста, как найти в вас в пачке?
+# При вводе вашего имени и фамилии в поиск у меня пустота :(
 
 
 @dataclass
@@ -100,7 +101,7 @@ class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
 
     CALORIES_WEIGHT_MULTIPLIER = 0.035
-    CALORIES_SPEED_MULTIPLIER = 0.029
+    CALORIES_SPEED_DIV_BY_HEIGHT_MULTIPLIER = 0.029
     KM_S_TO_M_S = 0.278
     C_TO_M = 100
 
@@ -124,7 +125,7 @@ class SportsWalking(Training):
                     / self.height
                     * self.C_TO_M
                 )
-                * self.CALORIES_SPEED_MULTIPLIER
+                * self.CALORIES_SPEED_DIV_BY_HEIGHT_MULTIPLIER
                 * self.weight
             )
             * self.duration
